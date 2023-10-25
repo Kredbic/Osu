@@ -1,0 +1,45 @@
+* {
+    user-select: none;
+}
+
+body {
+    font-family: "Sofia", sans-serif;
+    font-size: 80px;
+    background-size: cover;
+}
+
+button {
+    font-size: 50px;
+    background-color: rgb(26, 173, 26);
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 35%;
+}
+
+#start:hover{
+    box-shadow: 0 0 50px rgb(57, 170, 57);
+}
+
+#koule:hover{
+    box-shadow: 0 0 50px rgb(57, 170, 57);
+}
+
+
+#koule {
+    border: green 5px solid;
+    background-color: rgb(26, 173, 26);
+    border-radius: 100%;
+    max-width: 100px;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    cursor: pointer;
+    top: 300px;
+    left: 250px;
+    color: rgb(26, 173, 26);
+    transition: 0.2s;
+}
