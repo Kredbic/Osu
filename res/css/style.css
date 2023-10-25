@@ -5,6 +5,7 @@
 body {
     font-family: "Sofia", sans-serif;
     font-size: 80px;
+    background-image: url("../image/backg.jpg");
     background-size: cover;
 }
 

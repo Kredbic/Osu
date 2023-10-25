@@ -82,14 +82,27 @@ console.log(createSentence(person, age))
 
 const start = document.getElementById("start")
 const koule = document.getElementById("koule")
+let gameInterval;
 
 start.onclick = () => {
-    moveKoule(koule, getRandomNumber(50, 600), getRandomNumber(50,600))
+    hideElement(start)
+    startGameInterval(koule)
 }
 
 const moveKoule = (element, x, y) => {
     element.style.top = `${y}px`;
     element.style.left = `${x}px`;
+}
+
+const hideElement = (element) => {
+    element.style.display = "none";
+}
+
+const startGameInterval = (element) => {
+    clearInterval(gameInterval);
+    gameInterval = setInterval(() => {
+        moveKoule(element, getRandomNumber(50, 1000), getRandomNumber(50,1000))
+    }, 1000)
 }
 
 const getRandomNumber =  (minimum, maximum) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
