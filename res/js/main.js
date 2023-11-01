@@ -80,13 +80,17 @@ console.log(createSentence(person, age))
 
 // ←----------- Příklad č 5 -----------→
 
-const start = document.getElementById("start")
-const koule = document.getElementById("koule")
+const start = document.getElementById("start");
+const koule = document.getElementById("koule");
+const timeInfo = document.getElementById("timeInfo");
 let gameInterval;
+let timeStart;
 
 start.onclick = () => {
-    hideElement(start)
-    startGameInterval(koule)
+    hideElement(start);
+    startGameInterval(koule);
+    setKouleClick(koule);
+    timeStart = performance.now();
 }
 
 const moveKoule = (element, x, y) => {
@@ -101,8 +105,27 @@ const hideElement = (element) => {
 const startGameInterval = (element) => {
     clearInterval(gameInterval);
     gameInterval = setInterval(() => {
-        moveKoule(element, getRandomNumber(50, 1000), getRandomNumber(50,1000))
-    }, 1000)
+        setSize(element, getRandomNumber(50,80))
+        moveKoule(element, getRandomNumber(50,window.innerWidth - parseInt(element.style.width)), getRandomNumber(50,window.innerHeight - parseInt(element.style.height)))
+
+    }, 550)
 }
 
 const getRandomNumber =  (minimum, maximum) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+
+const setKouleClick = (element) => {
+    element.onclick = () => {
+        element.innerText++;
+        setSize(element, getRandomNumber(50,80))
+        moveKoule(element, getRandomNumber(50,window.innerWidth - parseInt(element.style.width)), getRandomNumber(50,window.innerHeight - parseInt(element.style.height)))
+        let timeEnd = performance.now();
+        let result = timeEnd - timeStart;
+        timeInfo.innerText = `Time: ${result}ms`
+        timeStart = performence.now();
+    }
+}
+
+const setSize = (element, size) => {
+    element.style.width = `${size}px`;
+    element.style.height = `${size}px`;
+}
